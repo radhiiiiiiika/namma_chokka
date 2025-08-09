@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>namma chokka by Neha - Premium Fashion</title>
+    <link rel="stylesheet" href="nc_v2.css">
+</head>
+<body>
+    <!-- NAV BAR -->
+    <nav class="navbar">
+  <div class="nav-container">
+    <ul class="nav-menu">
+      <li><a href="#home" class="nav-link">Home</a></li>
+      <li><a href="#about" class="nav-link">About</a></li>
+      <li><a href="#collections" class="nav-link">Collections</a></li>
+      <li><a href="#gallery" class="nav-link">Gallery</a></li>
+      <li><a href="#testimonials" class="nav-link">Reviews</a></li>
+      <li><a href="#contact" class="nav-link">Contact</a></li>
+    </ul>
+
+    <div class="cart-icon" onclick="toggleCart()">
+      <span class="cart-count">3</span>
+      🛒
+    </div>
+
+    <div class="hamburger" onclick="toggleMobileMenu()">☰</div>
+  </div>
+</nav>
+
+    <!-- CART SIDEBAR -->
+    <div class="cart-sidebar" id="cartSidebar">
+        <div class="cart-header">
+            <h3>our cupboard</h3>
+            <button class="close-cart" onclick="toggleCart()">X</button>
+        </div>
+        <div class="cart-items">
+            <div class="cart-item">
+                <div class="item-image">👗</div>
+                <div class="item-details">
+                    <h4>Heritage Saree</h4>
+                    <p>₹3,499</p>
+                    <div class="quantity-controls">
+                        <button onclick="updateQuantity(this, -1)">-</button>
+                        <span class="quantity">1</span>
+                        <button onclick="updateQuantity(this, 1)">+</button>
+                    </div>
+                </div>
+            </div>
+            <div class="cart-item">
+                <div class="item-image">👚</div>
+                <div class="item-details">
+                    <h4>Fusion Kurti</h4>
+                    <p>₹2,299</p>
+                    <div class="quantity-controls">
+                        <button onclick="updateQuantity(this, -1)">-</button>
+                        <span class="quantity">2</span>
+                        <button onclick="updateQuantity(this, 1)">+</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="cart-footer">
+            <div class="cart-total">
+                <strong>Total: ₹8,097</strong>
+            </div>
+            <button class="checkout-btn">Proceed to Checkout</button>
+        </div>
+    </div>
+
+    <!-- HERO SECTION W/ LOGO -->
+    <section class="hero" id="home">
+        <div class="geometric-bg"></div>
+        <div class="hero-content">
+    <img src="images/namma_chokka_logo.png" alt="Namma Chokka Logo" class="hero-logo" />
+    <h1>namma chokka</h1>
+    <p class="tagline">by Neha</p>
+    <a href="#collections" class="cta-button">Explore Collections</a>
+</div>
+
+    </section>
+
+    <!-- ABOUT NAMMA CHOKKA -->
+    <section class="about fade-in" id="about">
+        <div class="container">
+            <h2 class="section-title">About Namma Chokka</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <p>Welcome to Namma Chokka, where tradition meets contemporary style. Founded by Neha, our brand celebrates the rich heritage of Indian fashion while embracing modern aesthetics.</p>
+                    <br>
+                    <p>Each piece in our collection is carefully curated to reflect the essence of timeless elegance, bringing you clothing that speaks to both your heritage and your individual style. From traditional wear to fusion pieces, we create fashion that tells your story.</p>
+                    <br>
+                    <p>Discover the perfect blend of comfort, style, and cultural pride with Namma Chokka.</p>
+                </div>
+                <div class="about-image">
+                    <span>Premium Fashion Collection</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- NAMMA CHOKKA SEASON SELECTIONS -->
+    <section class="collections fade-in" id="collections">
+        <div class="container">
+            <h2 class="section-title">Our Collections</h2>
+            <div class="collection-grid">
+                <div class="collection-card popup-effect">
+                    <div class="collection-image">
+                        <span>Traditional Elegance</span>
+                        <div class="overlay">
+                            <button class="add-to-cart-btn" onclick="addToCart('Heritage Collection', 2999)">Add to Cart</button>
+                        </div>
+                    </div>
+                    <div class="collection-info">
+                        <h3 class="collection-title">Heritage Collection</h3>
+                        <p class="collection-desc">Timeless traditional wear with a modern twist</p>
+                        <p class="collection-price">Starting from ₹2,999</p>
+                    </div>
+                </div>
+                <div class="collection-card popup-effect">
+                    <div class="collection-image">
+                        <span>Contemporary Fusion</span>
+                        <div class="overlay">
+                            <button class="add-to-cart-btn" onclick="addToCart('Fusion Line', 1899)">Add to Cart</button>
+                        </div>
+                    </div>
+                    <div class="collection-info">
+                        <h3 class="collection-title">Fusion Line</h3>
+                        <p class="collection-desc">Where east meets west in perfect harmony</p>
+                        <p class="collection-price">Starting from ₹1,899</p>
+                    </div>
+                </div>
+                <div class="collection-card popup-effect">
+                    <div class="collection-image">
+                        <span>Festive Glamour</span>
+                        <div class="overlay">
+                            <button class="add-to-cart-btn" onclick="addToCart('Celebration Wear', 4499)">Add to Cart</button>
+                        </div>
+                    </div>
+                    <div class="collection-info">
+                        <h3 class="collection-title">Celebration Wear</h3>
+                        <p class="collection-desc">Make every occasion memorable with our festive collection</p>
+                        <p class="collection-price">Starting from ₹4,499</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- NAMMA CHOKKA PRODUCT GALLERY -->
+    <section class="gallery fade-in" id="gallery">
+        <div class="container">
+            <h2 class="section-title">Product Gallery</h2>
+            <div class="gallery-filter">
+                <button class="filter-btn active" onclick="filterGallery('all')">All</button>
+                <button class="filter-btn" onclick="filterGallery('traditional')">Traditional</button>
+                <button class="filter-btn" onclick="filterGallery('fusion')">Fusion</button>
+                <button class="filter-btn" onclick="filterGallery('festive')">Festive</button>
+            </div>
+            <div class="gallery-grid">
+                <div class="gallery-item popup-effect" data-category="traditional">
+                    <div class="gallery-image">
+                        <span>🥻</span>
+                        <div class="gallery-overlay">
+                            <h4>Silk Saree</h4>
+                            <p>₹5,999</p>
+                            <button class="quick-view-btn" onclick="quickView('Silk Saree')">Quick View</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="gallery-item popup-effect" data-category="fusion">
+                    <div class="gallery-image">
+                        <span>👗</span>
+                        <div class="gallery-overlay">
+                            <h4>Indo-Western Dress</h4>
+                            <p>₹3,299</p>
+                            <button class="quick-view-btn" onclick="quickView('Indo-Western Dress')">Quick View</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="gallery-item popup-effect" data-category="festive">
+                    <div class="gallery-image">
+                        <span>👘</span>
+                        <div class="gallery-overlay">
+                            <h4>Designer Lehenga</h4>
+                            <p>₹8,999</p>
+                            <button class="quick-view-btn" onclick="quickView('Designer Lehenga')">Quick View</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="gallery-item popup-effect" data-category="traditional">
+                    <div class="gallery-image">
+                        <span>👚</span>
+                        <div class="gallery-overlay">
+                            <h4>Embroidered Kurti</h4>
+                            <p>₹2,499</p>
+                            <button class="quick-view-btn" onclick="quickView('Embroidered Kurti')">Quick View</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="gallery-item popup-effect" data-category="fusion">
+                    <div class="gallery-image">
+                        <span>🦺</span>
+                        <div class="gallery-overlay">
+                            <h4>Jacket Set</h4>
+                            <p>₹4,299</p>
+                            <button class="quick-view-btn" onclick="quickView('Jacket Set')">Quick View</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="gallery-item popup-effect" data-category="festive">
+                    <div class="gallery-image">
+                        <span>👑</span>
+                        <div class="gallery-overlay">
+                            <h4>Bridal Collection</h4>
+                            <p>₹15,999</p>
+                            <button class="quick-view-btn" onclick="quickView('Bridal Collection')">Quick View</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- NAMMA CHOKKA REVIEW AND TESTIMONAL SECTION -->
+    <section class="testimonials fade-in" id="testimonials">
+        <div class="container">
+            <h2 class="section-title">What Our Customers Say</h2>
+            <div class="testimonials-grid">
+                <div class="testimonial-card popup-effect">
+                    <div class="testimonial-content">
+                        <div class="stars">⭐⭐⭐⭐⭐</div>
+                        <p>"Absolutely stunning designs! The quality is exceptional and the fitting is perfect. Neha's attention to detail is remarkable."</p>
+                    </div>
+                    <div class="customer-info">
+                        <div class="customer-avatar">👩‍💼</div>
+                        <div class="customer-details">
+                            <h4>Priya Sharma</h4>
+                            <span>Fashion Enthusiast</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card popup-effect">
+                    <div class="testimonial-content">
+                        <div class="stars">⭐⭐⭐⭐⭐</div>
+                        <p>"I've been shopping here for years. The fusion collection is my favorite - it's perfect for both office and parties!"</p>
+                    </div>
+                    <div class="customer-info">
+                        <div class="customer-avatar">👩‍🎨</div>
+                        <div class="customer-details">
+                            <h4>Anita Reddy</h4>
+                            <span>Regular Customer</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card popup-effect">
+                    <div class="testimonial-content">
+                        <div class="stars">⭐⭐⭐⭐⭐</div>
+                        <p>"The bridal collection is absolutely divine! My wedding outfit was a dream come true. Thank you Namma Chokka!"</p>
+                    </div>
+                    <div class="customer-info">
+                        <div class="customer-avatar">👰</div>
+                        <div class="customer-details">
+                            <h4>Kavya Iyer</h4>
+                            <span>Bride</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card popup-effect">
+                    <div class="testimonial-content">
+                        <div class="stars">⭐⭐⭐⭐⭐</div>
+                        <p>"Love the traditional collection! Each piece tells a story and the craftsmanship is outstanding. Highly recommended!"</p>
+                    </div>
+                    <div class="customer-info">
+                        <div class="customer-avatar">👩‍🏫</div>
+                        <div class="customer-details">
+                            <h4>Meera Patel</h4>
+                            <span>Teacher</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACT NAMMA CHOKKA @ -->
+    <section class="contact fade-in" id="contact">
+        <div class="container">
+            <h2 class="section-title" style="color: var(--cream-light);">Get In Touch</h2>
+            <div class="contact-content">
+                <div class="contact-form">
+                    <div class="form-group">
+                        <label for="name">Name</label>
+                        <input type="text" id="name" placeholder="Your Name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" placeholder="your@email.com" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Message</label>
+                        <textarea id="message" rows="5" placeholder="Tell us about your fashion needs..." required></textarea>
+                    </div>
+                    <button type="submit" class="submit-btn popup-effect">Send Message</button>
+                </div>
+                <div class="contact-info">
+                    <h3>Visit Our Studio</h3>
+                    <p>📍 Fashion District, Bangalore</p>
+                    <p>📞 +91 98765 43210</p>
+                    <p>✉️ hello@nammachokka.com</p>
+                    <br>
+                    <h3>Business Hours</h3>
+                    <p>Monday - Saturday: 10:00 AM - 7:00 PM</p>
+                    <p>Sunday: 11:00 AM - 5:00 PM</p>
+                    <br>
+                    <p>Follow us on social media for the latest updates and behind-the-scenes content from our design studio!</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; © 2025 Namma Chokka by Neha | All rights reserved.</p>
+            <div class="social-links">
+                <a href="https://instagram.com/nammachokka" target="_blank" class="social-link popup-effect" title="Follow us on Instagram">📷</a>
+                <a href="mailto:hello@nammachokka.com" class="social-link popup-effect" title="Email us">✉️</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- QUICK VIEWS -->
+    <div class="modal" id="quickViewModal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeModal()">&times;</span>
+            <div class="modal-body">
+                <div class="product-image">
+                    <span id="modalProductIcon">👗</span>
+                </div>
+                <div class="product-details">
+                    <h3 id="modalProductName">Product Name</h3>
+                    <p id="modalProductPrice">₹0</p>
+                    <p>Premium quality fabric with exquisite craftsmanship. Available in multiple sizes and colors.</p>
+                    <div class="size-selector">
+                        <label>Size:</label>
+                        <select>
+                            <option>S</option>
+                            <option>M</option>
+                            <option>L</option>
+                            <option>XL</option>
+                        </select>
+                    </div>
+                    <button class="add-to-cart-btn" onclick="addToCartFromModal()">Add to Cart</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="nc_v2.js"></script>
+</body>
+</html>
