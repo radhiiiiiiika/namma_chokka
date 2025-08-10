@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>namma chokka by Neha - Premium Fashion</title>
-    <link rel="stylesheet" href="nc_v2.css">
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <!-- NAV BAR -->
@@ -20,7 +20,7 @@
     </ul>
 
     <div class="cart-icon" onclick="toggleCart()">
-      <span class="cart-count">3</span>
+      <span class="cart-count">0</span>
       🛒
     </div>
 
@@ -34,35 +34,12 @@
             <h3>our cupboard</h3>
             <button class="close-cart" onclick="toggleCart()">X</button>
         </div>
-        <div class="cart-items">
-            <div class="cart-item">
-                <div class="item-image">👗</div>
-                <div class="item-details">
-                    <h4>Heritage Saree</h4>
-                    <p>₹3,499</p>
-                    <div class="quantity-controls">
-                        <button onclick="updateQuantity(this, -1)">-</button>
-                        <span class="quantity">1</span>
-                        <button onclick="updateQuantity(this, 1)">+</button>
-                    </div>
-                </div>
-            </div>
-            <div class="cart-item">
-                <div class="item-image">👚</div>
-                <div class="item-details">
-                    <h4>Fusion Kurti</h4>
-                    <p>₹2,299</p>
-                    <div class="quantity-controls">
-                        <button onclick="updateQuantity(this, -1)">-</button>
-                        <span class="quantity">2</span>
-                        <button onclick="updateQuantity(this, 1)">+</button>
-                    </div>
-                </div>
-            </div>
+        <div class="cart-items" id="cartItemsContainer">
+            <!-- Cart items will be added dynamically -->
         </div>
         <div class="cart-footer">
             <div class="cart-total">
-                <strong>Total: ₹8,097</strong>
+                <strong>Total: ₹0</strong>
             </div>
             <button class="checkout-btn">Proceed to Checkout</button>
         </div>
@@ -304,14 +281,9 @@
                     <button type="submit" class="submit-btn popup-effect">Send Message</button>
                 </div>
                 <div class="contact-info">
-                    <h3>Visit Our Studio</h3>
-                    <p>📍 Fashion District, Bangalore</p>
-                    <p>📞 +91 98765 43210</p>
-                    <p>✉️ hello@nammachokka.com</p>
+                    <h3>Contact Us</h3>
+                    <p>✉️ namma.chokka@gmail.com</p>
                     <br>
-                    <h3>Business Hours</h3>
-                    <p>Monday - Saturday: 10:00 AM - 7:00 PM</p>
-                    <p>Sunday: 11:00 AM - 5:00 PM</p>
                     <br>
                     <p>Follow us on social media for the latest updates and behind-the-scenes content from our design studio!</p>
                 </div>
@@ -322,7 +294,7 @@
     <!-- FOOTER -->
     <footer class="footer">
         <div class="container">
-            <p>&copy; © 2025 Namma Chokka by Neha | All rights reserved.</p>
+            <p>&copy; 2025 Namma Chokka by Neha | All rights reserved.</p>
             <div class="social-links">
                 <a href="https://instagram.com/nammachokka" target="_blank" class="social-link popup-effect" title="Follow us on Instagram">📷</a>
                 <a href="mailto:hello@nammachokka.com" class="social-link popup-effect" title="Email us">✉️</a>
@@ -357,6 +329,6 @@
         </div>
     </div>
 
-    <script src="nc_v2.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>

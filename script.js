@@ -30,11 +30,8 @@ document.querySelectorAll('.fade-in').forEach(el => {
     observer.observe(el);
 });
 
-// Shopping Cart Functions
-let cartItems = [
-    { id: 1, name: 'Heritage Saree', price: 3499, quantity: 1, icon: '🥻' },
-    { id: 2, name: 'Fusion Kurti', price: 2299, quantity: 2, icon: '👚' }
-];
+// Shopping Cart Functions - Start with empty cart
+let cartItems = [];
 
 function toggleCart() {
     const cartSidebar = document.getElementById('cartSidebar');
@@ -51,25 +48,64 @@ function updateCartTotal() {
     document.querySelector('.cart-total strong').textContent = `Total: ₹${total.toLocaleString()}`;
 }
 
-function updateQuantity(button, change) {
-    const cartItem = button.closest('.cart-item');
-    const quantitySpan = cartItem.querySelector('.quantity');
-    let quantity = parseInt(quantitySpan.textContent) + change;
+function renderCartItems() {
+    const cartContainer = document.getElementById('cartItemsContainer');
     
-    if (quantity < 1) quantity = 1;
-    if (quantity > 10) quantity = 10;
-    
-    quantitySpan.textContent = quantity;
-    
-    // Update cart data
-    const itemName = cartItem.querySelector('h4').textContent;
-    const item = cartItems.find(item => item.name === itemName);
-    if (item) {
-        item.quantity = quantity;
+    if (cartItems.length === 0) {
+        cartContainer.innerHTML = '<div style="text-align: center; padding: 2rem; color: #666;">Your cart is empty</div>';
+        return;
     }
     
-    updateCartCount();
-    updateCartTotal();
+    cartContainer.innerHTML = cartItems.map(item => `
+        <div class="cart-item" data-item-id="${item.id}">
+            <div class="item-image">${item.icon}</div>
+            <div class="item-details">
+                <h4>${item.name}</h4>
+                <p>₹${item.price.toLocaleString()}</p>
+                <div class="quantity-controls">
+                    <button onclick="updateQuantity(this, -1)">-</button>
+                    <span class="quantity">${item.quantity}</span>
+                    <button onclick="updateQuantity(this, 1)">+</button>
+                </div>
+            </div>
+        </div>
+    `).join('');
+}
+
+function updateQuantity(button, change) {
+    const cartItem = button.closest('.cart-item');
+    const itemId = parseInt(cartItem.getAttribute('data-item-id'));
+    const item = cartItems.find(item => item.id === itemId);
+    
+    if (item) {
+        item.quantity += change;
+        
+        // Remove item if quantity becomes 0
+        if (item.quantity <= 0) {
+            cartItems = cartItems.filter(cartItem => cartItem.id !== itemId);
+        } else if (item.quantity > 10) {
+            item.quantity = 10; // Max quantity limit
+        }
+        
+        renderCartItems();
+        updateCartCount();
+        updateCartTotal();
+    }
+}
+
+function getProductIcon(productName) {
+    const iconMap = {
+        'Heritage Collection': '🥻',
+        'Fusion Line': '👚',
+        'Celebration Wear': '👘',
+        'Silk Saree': '🥻',
+        'Indo-Western Dress': '👗',
+        'Designer Lehenga': '👘',
+        'Embroidered Kurti': '👚',
+        'Jacket Set': '🦺',
+        'Bridal Collection': '👑'
+    };
+    return iconMap[productName] || '👗';
 }
 
 function addToCart(productName, price) {
@@ -79,14 +115,15 @@ function addToCart(productName, price) {
         existingItem.quantity += 1;
     } else {
         cartItems.push({
-            id: cartItems.length + 1,
+            id: Date.now(), // Simple unique ID
             name: productName,
             price: price,
             quantity: 1,
-            icon: '👗'
+            icon: getProductIcon(productName)
         });
     }
     
+    renderCartItems();
     updateCartCount();
     updateCartTotal();
     
@@ -245,8 +282,9 @@ window.addEventListener('scroll', function() {
 
 // Initialize cart display
 document.addEventListener('DOMContentLoaded', function() {
-    updateCartCount();
-    updateCartTotal();
+    renderCartItems(); // Render empty cart initially
+    updateCartCount(); // Should show 0
+    updateCartTotal(); // Should show ₹0
     
     // Add some entrance animations to elements
     const animatedElements = document.querySelectorAll('.popup-effect');

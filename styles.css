@@ -132,6 +132,12 @@ body {
     font-weight: bold;
 }
 
+/* Hide cart count when it's 0 */
+.cart-count:empty,
+.cart-count[data-count="0"] {
+    opacity: 0.5;
+}
+
 .nav-menu {
   display: flex;
   list-style: none;
@@ -207,12 +213,19 @@ body {
     overflow-y: auto;
 }
 
+/* Empty cart message styling */
+.cart-items div[style*="text-align: center"] {
+    font-style: italic;
+    font-size: 1.1rem;
+}
+
 .cart-item {
     display: flex;
     align-items: center;
     gap: 1rem;
     padding: 1rem 0;
     border-bottom: 1px solid #eee;
+    animation: slideInRight 0.3s ease;
 }
 
 .item-image {
